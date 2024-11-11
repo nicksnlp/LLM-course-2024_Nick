@@ -3,7 +3,7 @@ import google.generativeai as genai
 import strip_markdown
 import configparser
 
-API_KEY = os.environ.get("GEMINI_API_KEY")
+API_KEY = os.environ.get("API_GEMINI")
 genai.configure(api_key=API_KEY)
 LLM = "gemini-1.5-flash"
 model = genai.GenerativeModel(LLM)
@@ -13,8 +13,9 @@ prompts = configparser.ConfigParser()
 prompts.read('prompts.env')
 
 # Set system prompt
-#system_prompt = prompts.get("SYSTEM_PROMPTS", "IT_HELPDESK")
-system_prompt = f'Summarize the following text about {prompts.get("TEMPLATES", "TOPIC")} in {prompts.get("TEMPLATES", "NUMBER")} bullet points:'
+#system_prompt = prompts.get("SYSTEM_PROMPTS", "BASIC_PROMPT")
+system_prompt = f"Sing a song on the foolowing theme {prompts.get("PIRATES","THEME")} adding some words in {prompts.get("PIRATES","LANGUAGE")}, and using the following topic:"
+#system_prompt = f"Summarize the following text about {prompts.get("TEMPLATES", "TOPIC")} in {prompts.get("TEMPLATES", "NUMBER")} bullet points:"
 
 # Set up the app, including daisyui and tailwind for the chat component
 hdrs = (picolink, Script(src="https://cdn.tailwindcss.com"),
