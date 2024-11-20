@@ -15,7 +15,7 @@ prompts.read('prompts.env')
 # Set system prompt
 #system_prompt = prompts.get("SYSTEM_PROMPTS", "BASIC_PROMPT")
 #system_prompt = f"Sing a song on the following theme {prompts.get("SETUP","THEME")} adding some words in {prompts.get("SETUP","LANGUAGE")}, and using the following topic:"
-system_prompt = f"Summarize the following text about {prompts.get("TEMPLATES", "TOPIC")} in {prompts.get("TEMPLATES", "NUMBER")} bullet points:"
+system_prompt = f'Summarize the following text about {prompts.get("TEMPLATES", "TOPIC")} in {prompts.get("TEMPLATES", "NUMBER")} bullet points:'
 
 # Set up the app, including daisyui and tailwind for the chat component
 hdrs = (picolink, Script(src="https://cdn.tailwindcss.com"),
