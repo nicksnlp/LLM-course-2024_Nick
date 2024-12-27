@@ -1,3 +1,6 @@
+#Ignore environments' content
+*_env/*
+
 *.DS_Store
 
 ### JetBrains template
