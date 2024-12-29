@@ -39,7 +39,7 @@ Challenges you encountered?
 | 4    | 19/21.11. | [Fine-tuning LLMs](week-4/)                                              | 90 min lecture and 90 min coding lab                                                | Aarne   |
 | 5    | 26/28.11. | [Retrieval Augmented Generation (RAG)](week-5/)                          | [90 min lecture](https://www.youtube.com/watch?v=1GtBArPD-UA) and 90 min coding lab | Dmitry  |
 | 6    | 03/05.12. | [Use cases and applications of LLMs](week-6/)                            | [90 min lecture](https://www.youtube.com/watch?v=8LkR35wNZnU) and 90 min coding lab                                            | Dmitry  |
-| 7    | 10/12.12. | [Final report preparation](week-7/)                                      | Student work on their  final report                                                 | Aarne   |
+| 7    | 10/12.12. | [Final report preparation](week-7/)                                      | [90 min lecture - 30 min for each lecturer](https://www.youtube.com/watch?v=73UR75Lz9Lg) Students work on their  final report                                                 | Aarne   |
 
 
 ### Detailed Syllabus:
