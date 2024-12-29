@@ -95,9 +95,22 @@ training_arguments = TrainingArguments(
     
     I will change the subset into 1K to check the pipeline, and retrain, I will call the model *shrimp*
 
+    Also I will mount the Google Drive and to save checkpoints and other data there, so I could use checkpoints to resume training if it fails during the process. If Colab fails, the environments and all the data gets cleared too.  
+
+    For that reason I have added `resume_from_checkpoint=True` and `save_total_limit=3` into `TrainingArguments`. For 1K, there should be 63 steps, so I have set up `save_steps=10`, this can be 50 for 10K datapoints (625 steps) training. I have first tested the pipeline with 100 datapoints, and then run it with 1K.
+    
+    **Possible alternative 1**: Save the checkpoints and models to W&B, it then needs to be loaded for resuming, with a callback function as an *artifact*...
+    **Possible alternative 2**: Do the whole training somewhere outside of Colab with a SLURM script.
+
 ---
 - [ ] Evaluate training results and loss with W&B  
-    The training on 1K went pretty well, the  
+    The training on 1K went pretty well, these were the changes of the loss function.
+
+    For the failed 10K run the loss function looked the following.
+
+    <img src="./pics/W&B%20Chart%2030_12_2024,%2000_58_08.svg" alt="loss 10K" width="700" />
+
+    However, one need to decide what metrics/parameters to use to properly evaluate the model... This stays beyond the scope of this exercise, it is possible to test it with the `stream` function, indeed with 100 test-fine-tuning the results very rather hallucinative, but with 1K they were reasonably good, but what is good depends on our needs...
 
 - [ ] Save the model (Where!? Yes, in Colab environment...)  
 
@@ -106,19 +119,15 @@ training_arguments = TrainingArguments(
 - [ ] Load the base model
     When loading `base_model` I have set up `device_map = {"": 0}`, and implemented quantisation, by adding: `quantization_config=bnb_config` into parameters. `bnb_config` was defined earlier.
 
-
 - [ ] Merge the `base_model` and `new_model` and push into HuggingFace
 
 - [X] Created a model card for this model: https://huggingface.co/nicksnlp/shrimp/blob/main/README.md  
 
-**Possible alternative**: Saving checkpoints and other data to W&B or to Google Drive, when training larger models, reloading from a checkpoint to resume training if fails during the process. Preferably do the training somewhere outside of Colab.
+Not hasslefree, but everything worked at the end. The main issue was in adapting the code so it correctly processes paths when saving to Hugging Face, adding functionality to keep intermediate models and resume training from checkpoints, as well as adding correctly quantisation and padding. I've learned a lot of things about setting things up, and the process!
 
 Selecting another base model and dataset
 ---
-I wanted to try using T5 Google Model and a labelled QA dataset to adapt it for detecting hallucinations in texts. While training this model I will save the checkpoints into W&B and/or to Google Drive.
-
-
-
+I wanted to try using T5 Google Model and a labelled QA dataset to adapt it for detecting hallucinations in texts. Unfortunately, even *flan-t5-small* has 77M parameters, so I will save the idea for the future. I will try to use W&B and run the training on Puhti with a SLURM script.
 
 Utilising DPO instead of supervised fine-tuning
 ---
@@ -131,3 +140,4 @@ Since this is a bonus exercise, I will hopefully do it later on...
 2. https://chatgpt.com/share/67708817-1a4c-800b-a17a-c99bcdcbd05d
 3. https://chatgpt.com/share/67709535-13c0-800b-b07a-2446d28e701a
 4. https://chatgpt.com/share/67714f3a-390c-800b-8a6c-2da3d5c5815b
+5. https://chatgpt.com/share/6771c958-592c-800b-a846-1a10425d06f0
