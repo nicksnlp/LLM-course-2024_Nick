@@ -134,7 +134,9 @@ Selecting another base model and dataset
 ---
 I wanted to try using T5 Google Model and a labelled QA dataset to adapt it for detecting hallucinations in texts. Unfortunately, even *flan-t5-small* has 77M parameters, so I will save the idea for the future. I will try to use W&B and run the training on Puhti with a SLURM script.
 
-An alternative is to use one of the llama family model, they range from 1B to 70B in size. Finding a good dataset is problematic.
+An alternative is to use one of the llama family model, they range from 1B to 70B in size. For example `meta-llama/Llama-2-7b-hf`. Finding a good dataset is problematic, I will need to adapt an existing one.
+
+
 
 Utilising DPO instead of supervised fine-tuning
 ---
