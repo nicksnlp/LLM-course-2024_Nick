@@ -132,10 +132,9 @@ Not hasslefree, but everything worked at the end. The main issue was in adapting
 
 Selecting another base model and dataset
 ---
-I wanted to try using T5 Google Model and a labelled QA dataset to adapt it for detecting hallucinations in texts. Unfortunately, even *flan-t5-small* has 77M parameters, so I will save the idea for the future. I will try to use W&B and run the training on Puhti with a SLURM script.
+I wanted to try using T5 Google Model and a labelled QA dataset to adapt it for detecting hallucinations in texts. Unfortunately, even *flan-t5-small* has 77M parameters, so I will save this idea for the future. Ideally, I will try to use W&B and run the training on Puhti with a SLURM script.
 
-An alternative is to use one of the llama family model, they range from 1B to 70B in size. For example `meta-llama/Llama-2-7b-hf`. Finding a good dataset is problematic, I will need to adapt an existing one.
-
+An alternative is to use one of the llama family model, they range from 1B to 70B in size. For example `meta-llama/Llama-2-7b-hf`. Finding a good dataset is problematic, I will need to adapt an existing one. For now I will use a sample dictionary. The code is implemented in the notebook *Fine-tune_llama.ipynb*.
 
 
 Utilising DPO instead of supervised fine-tuning
@@ -150,5 +149,6 @@ Since this is a bonus exercise, I will hopefully do it later on...
 3. https://chatgpt.com/share/67709535-13c0-800b-b07a-2446d28e701a
 4. https://chatgpt.com/share/67714f3a-390c-800b-8a6c-2da3d5c5815b
 5. https://chatgpt.com/share/6771c958-592c-800b-a846-1a10425d06f0
+6. https://chatgpt.com/share/67729fee-da9c-800b-808a-28a722cd3174
 
 ---
