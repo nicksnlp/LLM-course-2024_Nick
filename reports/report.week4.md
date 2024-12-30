@@ -91,6 +91,8 @@ training_arguments = TrainingArguments(
     UPDATE: Unfortunately, I have been cut off from colab, after it was almost done.  
     [561/625 7:03:31 < 48:29, 0.02 it/s, Epoch 0.90/1]  
     
+    ---
+
     **Verdict**: Running this notebook with the available resources, without saving checkpoints outside of Colab was not a good idea... The data is lost and the time too...  
     
     I will change the subset into 1K to check the pipeline, and retrain, I will call the model *shrimp*
@@ -99,27 +101,30 @@ training_arguments = TrainingArguments(
 
     For that reason I have added `resume_from_checkpoint=True` and `save_total_limit=3` into `TrainingArguments`. For 1K, there should be 63 steps, so I have set up `save_steps=10`, this can be 50 for 10K datapoints (625 steps) training. I have first tested the pipeline with 100 datapoints, and then run it with 1K.
     
-    **Possible alternative 1**: Save the checkpoints and models to W&B, it then needs to be loaded for resuming, with a callback function as an *artifact*...
+    **Possible alternative 1**: Save the checkpoints and models to W&B, it then needs to be loaded for resuming, with a callback function as an *artifact*...  
     **Possible alternative 2**: Do the whole training somewhere outside of Colab with a SLURM script.
 
----
-- [ ] Evaluate training results and loss with W&B  
-    The training on 1K went pretty well, these were the changes of the loss function.
-
-    For the failed 10K run the loss function looked the following.
+    ---
+- [x] Evaluate training results and loss with W&B  
+    
+    For the failed **10K** run went pretty well with the loss function looking as follows.
 
     <img src="./pics/W&B%20Chart%2030_12_2024,%2000_58_08.svg" alt="loss 10K" width="700" />
 
-    However, one need to decide what metrics/parameters to use to properly evaluate the model... This stays beyond the scope of this exercise, it is possible to test it with the `stream` function, indeed with 100 test-fine-tuning the results very rather hallucinative, but with 1K they were reasonably good, but what is good depends on our needs...
+    The training on **1K datapoints** the loss gained **1.6542** at step 60. This must be lower than in 10K since the warm-up was shorter.  
 
-- [ ] Save the model (Where!? Yes, in Colab environment...)  
+    However, one need to decide what metrics/parameters to use to properly evaluate the model... This stays beyond the scope of this exercise, we somehow evaluate the results with the `stream` function, indeed while in 100 datapoints test-run the results very rather hallucinative, with 1K, although with a lot of repetitive information they are already reasonably good, but what is good depends of course on our needs...
+
+- [x] Save the model (Where!? Yes, in Colab environment...)  
 
     Saving with the name `new_model` caused issues when later pushing the model, therefore I have saved it with a different path, not `new_model`.
 
-- [ ] Load the base model
+- [x] Loaded the base model
     When loading `base_model` I have set up `device_map = {"": 0}`, and implemented quantisation, by adding: `quantization_config=bnb_config` into parameters. `bnb_config` was defined earlier.
 
-- [ ] Merge the `base_model` and `new_model` and push into HuggingFace
+- [x] Merged the `base_model` and `new_model` and pushed into HuggingFace.
+   
+     The new model has 3.87B parameters.
 
 - [X] Created a model card for this model: https://huggingface.co/nicksnlp/shrimp/blob/main/README.md  
 
@@ -141,3 +146,5 @@ Since this is a bonus exercise, I will hopefully do it later on...
 3. https://chatgpt.com/share/67709535-13c0-800b-b07a-2446d28e701a
 4. https://chatgpt.com/share/67714f3a-390c-800b-8a6c-2da3d5c5815b
 5. https://chatgpt.com/share/6771c958-592c-800b-a846-1a10425d06f0
+
+---

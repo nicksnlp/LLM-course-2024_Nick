@@ -1,5 +1,9 @@
 # Fine-tuning T5 model with QA dataset
 
+## References:
+## https://chatgpt.com/share/6771e816-5bac-800b-ba78-dd785ad316b3
+
+
 !pip install peft transformers datasets accelerate
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 from peft import LoraConfig, get_peft_model
