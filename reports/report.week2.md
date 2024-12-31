@@ -9,6 +9,6 @@ I have also activated API keys for Gemini and OpenAi, and learned how to use the
 
 I have created a python environment and tested the prompting chatbot, with a configuration file, and the notebook (it was slightly easier there). I made the LLM to sing songs about *pirates* and include words in latin (or another specified language) into it.
 
-Also, I have already managed to put those things into practice for some other work. I found configuration to be very useful, and the the fact that you can loop through the prompts.
+Also, I have already managed to put those things into practice for some other work. I found configuration to be very useful, and the fact that you can loop through the prompts, and in that way implement ***zero-shot*** or ***few-shot*** prompting with variable parameters.
 
 ---

@@ -1,8 +1,6 @@
 
-## Week 5
+## Weeks 5 and 6
 
 
-
-### References:
 
 ---
