@@ -177,6 +177,8 @@ https://medium.com/@preeti.rana.ai/instruction-tuning-llama-2-7b-for-news-classi
 Okay, finally, (thanks to Gemini 2.0 Flash). It seemed to work by reducing the target_modules to `["q_proj", "v_proj"]`.
 Gemini also insisted I should add collator, may be it is what made things work... I will test it later.
 
+
+
 The code works, here is an example of Inference:
 
 Input:
@@ -188,6 +190,13 @@ Output:
 > ['Alexander', 'in', ',', 'has', 'there', 'since', '1', '6', '.']
 
 But now I need more data.
+
+The model is saved and pushed to Hugging Face: https://huggingface.co/nicksnlp/llama-7B-hallucination
+
+UPDATE: The problem was in **collator**. The training worked with a larger selection of parameters, but the results are ***different***:  
+Hallucinated words:  
+['▁Alexander', 'platz', '▁is', '▁located', '▁in', '▁London', '▁City', ',', '▁it', '▁has', '▁been', '▁since', '▁', '1', '9', '6', '6', '.']  
+['Alexander', 'platz', 'is', 'located', 'in', 'London', 'City', ',', 'it', 'has', 'been', 'since', '', '1', '9', '6', '6', '.']  
 
 Utilising DPO instead of supervised fine-tuning
 ---
