@@ -96,16 +96,40 @@ Well, it will lead to very long sequences that the neural network have to proces
 ---
 ## Week 2
 
+Although it felt just as a beginning, the week and exercises were very useful indeed to learn how to start and set things up, and I have learned a lot about practical aspects of dealing with LLMs.
 
+I have created a Hugging Face account, learned how to use secrets and implement them within my code, both in Colab and in the python code through the system configuration files.
 
-### References:
+I have also activated API keys for Gemini and OpenAi, and learned how to use them.
+
+I have created a python environment and tested the prompting chatbot, with a configuration file, and the notebook (it was slightly easier there). I made the LLM to sing songs about *pirates* and include words in latin (or another specified language) into it.
+
+Also, I have already managed to put those things into practice for some other work. I found configuration to be very useful, and the fact that you can loop through the prompts, and in that way implement ***zero-shot*** or ***few-shot*** prompting with variable parameters.
+
+For the **in-context-learning** assignment I have successfully run the notebook, and extracted *strengths* and *weaknesses* for each article. 
 
 ---
 ## Week 3
 
+The assignment was to find the ways to evaluate models, and more specifically their ability to produce adequate, similar in terms of content results but within different domains.
 
+**Zero-shot prompting**  
+I had different ideas about how this assignment can be approached. And I have come to a decision that a proper experiment requires the following set-up:  
+1. Selection of models (e.g. from Hugging Face), smaller would be more interesting for evaluation purposes (the larger seem to be harder to break);
+2. a large selection of questions, within the specified domains, a dataset (this can be an augmented dataset, produced by an llm of a choice, or some of already available QA datasets);
+3. a system that will loop through the dataset and deliver prompts into models, and register the outputs;
+4. a system that compares the outputs from the models against the gold-standard, or a reference set, in terms of adequacy. An adaptation of ROUGE-metric may be an option to use here, or a specifically-designed system for that purpose, that will check the output irrespective of their style/language, based on the defined parameters, this can be also be an llm-system.
 
-### References:
+*Unfortunately, I have not run the experiment itself yet, which would be a nice thing to do in the future.*
+
+**Few-shot prompting**  
+I have also tried prompting a model (GPT-4o) in an dialogue set-up, by asking it for general financial advices in a informal/slang type of language in Russian. As it proved, the model was very good in adapting to a specific language-style while still giving a reasonable advice. I suppose the dialogue systems, like chat-gpt, have some solid external architecture that adjusts the output before delivering, the model keeps remembering the previous dialogue, and is well designed for a conversation. The only way to shift its output was to trigger a different topic, which may seem more important from some point of view.
+
+For some more specific tasks, like checking the code, the output of chat-gpt can much more often seem inadequate in terms of the questions asked, and a more accurate line up of question is important.
+
+I have also did an interesting test and asked the model to *"give me a code to remove the outdated food from my fridge"*, which model handled relatively well. I suppose asking models ridiculous or ambiguous questions may also be a way to check their adequacy.
+
+Unfortunately, I did not keep good references for those prompts.
 
 ---
 ## Week4
@@ -259,18 +283,18 @@ This is how the tokenised_data should look like:
 ```
 For the rest of the architecture I am using the similar set-up as in the previous exercise, with quantisation.
 
-I have loaded the model and checked its layers. There are 32 layers. I have not chaneged any target layers for low-rank adaptation.
+I have loaded the model and checked its layers. There are 32 layers. I have not changed any target layers for low-rank adaptation.
 
 In `peft_config` I have changed the `task_type` to `TOKEN_CLS`, which is the one needed for classification.
 
-In the base model itself there is no layer, responsible for classification. An extra layer is added by `AutoModelForTokenClassification` with `num_labels=2`. As prescribed by Gemini, when assesing my code:  
+In the base model itself there is no layer, responsible for classification. An extra layer is added by `AutoModelForTokenClassification` with `num_labels=2`, as told by Gemini, when assessing my code:  
 > "The classification layer is added on top of the base model, making it separate. We want to fine-tune the base model to produce good representations which are then projected to the correct number of classes by the newly added classification layer.
 
 Leaving specified `target_modules` raises an error, which with explanation by Gemini, I decide to comment out:
 
 > No `target_modules`: PEFT automatically selects relevant linear layers (typically attention and MLP layers) based on task_type.
 
-But without `target_modules` it is imposible to run SFTTrainer, Trainer does not support peft_config... It is a dead end.
+But without `target_modules` it is impossible to run SFTTrainer, Trainer does not support peft_config... It is a dead end.
 
 Unfortunately, as it looks Peft is tricky to adapt for classification task...
 I've found an article, I will dive into it:
@@ -300,11 +324,14 @@ Hallucinated words:
 ['▁Alexander', 'platz', '▁is', '▁located', '▁in', '▁London', '▁City', ',', '▁it', '▁has', '▁been', '▁since', '▁', '1', '9', '6', '6', '.']  
 ['Alexander', 'platz', 'is', 'located', 'in', 'London', 'City', ',', 'it', 'has', 'been', 'since', '', '1', '9', '6', '6', '.']  
 
+So, in the future, I will expect which particular layers to address.
+
+
 Utilising DPO instead of supervised fine-tuning
 ---
 **Fine_tune_a_Mistral_7b_model_with_DPO.ipynb**
 
-Since this is a bonus exercise, I will hopefully do it later on...
+This is a bonus exercise, but I will hopefully do it later on...
 
 ### References:
 1. https://chatgpt.com/share/677021c2-0128-800b-957b-511b29768fd4
@@ -315,17 +342,12 @@ Since this is a bonus exercise, I will hopefully do it later on...
 6. https://chatgpt.com/share/67729fee-da9c-800b-808a-28a722cd3174
 
 ---
-## Week 5
+## Weeks 5 and 6
 
+I have had problems in running the *Streamlit UI* on my local machine, I have installed Docker and other dependencies, but still had problems with it.
 
+But the notebook setup for RAG worked.
 
-### References:
-
----
-## Week 6
-
-
-
-### References:
+Unfortunately, I did not have time to finish up those exercises to the desired level. Something I wish to be able to do in the future.
 
 ---

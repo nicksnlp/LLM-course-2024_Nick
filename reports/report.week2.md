@@ -11,4 +11,6 @@ I have created a python environment and tested the prompting chatbot, with a con
 
 Also, I have already managed to put those things into practice for some other work. I found configuration to be very useful, and the fact that you can loop through the prompts, and in that way implement ***zero-shot*** or ***few-shot*** prompting with variable parameters.
 
+For the **in-context-learning** assignment I have successfully run the notebook, and extracted *strengths* and *weaknesses* for each article. 
+
 ---
