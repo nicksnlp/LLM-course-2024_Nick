@@ -1,12 +1,5 @@
-**Nikolay Vorontsov** 
---- 
-**LLMs and GenAI for NLP, 2024**  
-<mark>Report on the Exercises in Labs 1 – 6</mark>  
-GitHub repository: **[nicksnlp](https://github.com/nicksnlp/LLM-course-2024_Nick)**   
 
-This is what I have done:  
-
-## Week1
+## Week 1
 
 ### What are tokenisers?
 
@@ -27,7 +20,7 @@ Text can be tokenised in different ways: into sentences (e.g. in NLTK `sent_piec
 Some of the well known tokenisers include BPE (Byte Pair Encoding) and Sentence-Piece:
 
 **BPE**  
-BPE initially splits the texts of the given sample into characters , but then learning from the co-occurencemerges some of the characters into larger units, this is done recursively. The result of this tokenisation is usually a vocabulary of some `subword-units`, not necesserily morphemes. It is good for treating rare or unknown words, among other things. In a simple algorithm for this is provided in [2]:
+BPE initially splits the texts of the given sample into characters, but then learning from the co-occurence, merges some of the characters into larger units, this is done recursively. The result of this tokenisation is usually a vocabulary of some *subword-units*, not necesserily morphemes. BPE is good for treating rare or unknown words, among other things. BPE's simple algorithm is provided in [2]:
 
 ```
 import re
@@ -69,7 +62,7 @@ for i in range(num_merges):
 
 ```
 
-**Sentence-Piece**
+**Sentence-Piece**  
 Sentence-Piece is another language-independent subword tokeniser, based on unigram model in combination with BPE. It works well with non-phonemic symbols, such as Japanese and Chinese, and is used in such models as T5, XML-R or mBERT.
 
 The traditional BERT model uses [WordPiece](https://paperswithcode.com/method/wordpiece). GPT-2 and GPT-3 models uses BPE on a byte-level, which is effective for treating special characters, for example.
@@ -78,7 +71,7 @@ The combination of strategies for tokenisation may be useful to fit training for
 
 An important feature of every tokeniser is also the ability to decode back the tokens into the readable texts, without losses! For example in neural machine translation, a translated text is evaluated on the decoded examples in comparison to the validation counterparts.
 
-*But why not to tokenise everything into bytes, or at least characters?* 
+*But why not to tokenise everything into bytes, or at least characters?*  
 Well, it will lead to very long sequences that the neural network have to process, the vectors will become too long to compute efficiently, and some semantic information that comes from co-occurrence may be lost, or at least require much more computational power to be captured by transformers or other models during training.
 
 ### References:
