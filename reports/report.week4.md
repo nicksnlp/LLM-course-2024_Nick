@@ -191,7 +191,7 @@ Hallucinated words:
 ['▁Alexander', 'platz', '▁is', '▁located', '▁in', '▁London', '▁City', ',', '▁it', '▁has', '▁been', '▁since', '▁', '1', '9', '6', '6', '.']  
 ['Alexander', 'platz', 'is', 'located', 'in', 'London', 'City', ',', 'it', 'has', 'been', 'since', '', '1', '9', '6', '6', '.']  
 
-So, in the future, I will expect which particular layers to address.
+So, in the future, I will inspect which particular layers to address.
 
 
 Utilising DPO instead of supervised fine-tuning

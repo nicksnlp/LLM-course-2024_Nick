@@ -13,7 +13,7 @@ To tokenise the text means to break it into pieces, whether into words or to sma
 They are crucial for the further processing of texts. Tokenisation simplifies the text, breaks it into logical units, reduces the vocabulary size, as well as enable models to handle new and rare words. This decreases the training time for the models, and improves their generalisation capabilities. 
 
 
-## What different tokenisation algorithms there are and which ones are the most popular ones and why?
+### What different tokenisation algorithms there are and which ones are the most popular ones and why?
 
 Text can be tokenised in different ways: into sentences (e.g. in NLTK `sent_piece`), words (e.g.`split()` in python) or on some smaller elements: morphemes (rule-based tokenisation), or into parts of the words, selected on other principles, into characters or bytes.
 

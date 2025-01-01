@@ -5,6 +5,6 @@ I have had problems in running the *Streamlit UI* on my local machine, I have in
 
 But the notebook setup for RAG worked.
 
-Unfortunately, I did not have time to finish up those exercises to the desired level. Something I wish to be able to do in the future.
+Unfortunately, I did not have time to finish up those exercises to the desired level, which is something I wish to be able to do in the future...
 
 ---

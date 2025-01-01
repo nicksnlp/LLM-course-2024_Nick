@@ -20,7 +20,7 @@ To tokenise the text means to break it into pieces, whether into words or to sma
 They are crucial for the further processing of texts. Tokenisation simplifies the text, breaks it into logical units, reduces the vocabulary size, as well as enable models to handle new and rare words. This decreases the training time for the models, and improves their generalisation capabilities. 
 
 
-## What different tokenisation algorithms there are and which ones are the most popular ones and why?
+### What different tokenisation algorithms there are and which ones are the most popular ones and why?
 
 Text can be tokenised in different ways: into sentences (e.g. in NLTK `sent_piece`), words (e.g.`split()` in python) or on some smaller elements: morphemes (rule-based tokenisation), or into parts of the words, selected on other principles, into characters or bytes.
 
@@ -324,7 +324,7 @@ Hallucinated words:
 ['▁Alexander', 'platz', '▁is', '▁located', '▁in', '▁London', '▁City', ',', '▁it', '▁has', '▁been', '▁since', '▁', '1', '9', '6', '6', '.']  
 ['Alexander', 'platz', 'is', 'located', 'in', 'London', 'City', ',', 'it', 'has', 'been', 'since', '', '1', '9', '6', '6', '.']  
 
-So, in the future, I will expect which particular layers to address.
+So, in the future, I will inspect which particular layers to address.
 
 
 Utilising DPO instead of supervised fine-tuning
@@ -348,6 +348,6 @@ I have had problems in running the *Streamlit UI* on my local machine, I have in
 
 But the notebook setup for RAG worked.
 
-Unfortunately, I did not have time to finish up those exercises to the desired level. Something I wish to be able to do in the future.
+Unfortunately, I did not have time to finish up those exercises to the desired level, which is something I wish to be able to do in the future...
 
 ---
